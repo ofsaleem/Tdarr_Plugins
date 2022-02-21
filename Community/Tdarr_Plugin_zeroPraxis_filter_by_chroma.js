@@ -43,9 +43,14 @@ const plugin = (file, librarySettings, inputs, otherArguments) => {
 
   var fileScheme = 'zzzzzzzz';
 
-  videoTrack = file.mediaInfo.track.find(track => track.type == "Video");
+  /*videoTrack = file.mediaInfo.track.find(track => track.type == "Video");
   if (videoTrack != undefined) {
     fileScheme = videoTrack.ChromaSubsampling;
+  }*/
+
+  videoTrack = file.ffProbeData.streams.find(track => track.codec_type == "video");
+  if (videoTrack != undefined) {
+    fileScheme = videoTrack.pix_fmt;
   }
 
   if (inputs.chromasToProcess !== '') {
