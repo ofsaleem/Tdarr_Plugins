@@ -11,7 +11,7 @@ const details = () => ({
     {
       name: 'chromasToProcess',
       type: 'string',
-      defaultValue: '',
+      defaultValue: 'yuv444p10le',
       inputUI: {
         type: 'text',
       },
@@ -43,13 +43,8 @@ const plugin = (file, librarySettings, inputs, otherArguments) => {
 
   var fileScheme = 'zzzzzzzz';
 
-  /*videoTrack = file.mediaInfo.track.find(track => track.type == "Video");
-  if (videoTrack != undefined) {
-    fileScheme = videoTrack.ChromaSubsampling;
-  }*/
-
   videoTrack = file.ffProbeData.streams.find(track => track.codec_type == "video");
-  if (videoTrack != undefined) {
+  if (videoTrack !== undefined) {
     fileScheme = videoTrack.pix_fmt;
   }
 
