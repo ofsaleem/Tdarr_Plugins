@@ -41,7 +41,7 @@ const plugin = (file, librarySettings, inputs, otherArguments) => {
     infoLog: '',
   };
 
-  const fileScheme = '';
+  const fileScheme = 'zzzzzzzz';
 
   file.mediaInfo.track.forEach(track => 
     if track.type == "Video" {
