@@ -41,11 +41,17 @@ const details = () => ({
       infoLog: '',
     };
   
-    const fileCodec = file.video_codec_name !== '' ? file.video_codec_name : file.audio_codec_name;
+    const fileScheme = '';
+    for track in file.mediaInfo.track {
+        if track.@type == "Video" {
+            fileScheme = track.ChromaSubsampling;
+            break;
+        }
+    }
   
     if (inputs.chromasToProcess !== '') {
-      const codecs = inputs.chromasToProcess.split(',');
-      if (codecs.includes(fileCodec)) {
+      const schemes = inputs.chromasToProcess.split(',');
+      if (schemes.includes(fileScheme)) {
         response.processFile = true;
         response.infoLog += 'File is in chromasToProcess. Moving to next plugin.';
       } else {
@@ -55,8 +61,8 @@ const details = () => ({
     }
   
     if (inputs.chromasToNotProcess !== '') {
-      const codecs = inputs.chromasToNotProcess.split(',');
-      if (codecs.includes(fileCodec)) {
+      const schemes = inputs.chromasToNotProcess.split(',');
+      if (schemes.includes(fileScheme)) {
         response.processFile = false;
         response.infoLog += 'File is in chromasToNotProcess. Breaking out of plugin stack.';
       } else {
