@@ -30,7 +30,7 @@ const details = () => ({
     },
   ],
 });
-  
+
 // eslint-disable-next-line no-unused-vars
 const plugin = (file, librarySettings, inputs, otherArguments) => {
   const lib = require('../methods/lib')();
@@ -43,11 +43,10 @@ const plugin = (file, librarySettings, inputs, otherArguments) => {
 
   var fileScheme = 'zzzzzzzz';
 
-  file.mediaInfo.track.forEach(track => 
-    if track.type == "Video" {
-      fileScheme = track.ChromaSubsampling;
-    }
-  );
+  videoTrack = file.mediaInfo.track.find(track => track.type == "Video");
+  if (videoTrack != undefined) {
+    fileScheme = videoTrack.ChromaSubsampling;
+  }
 
   if (inputs.chromasToProcess !== '') {
     const schemes = inputs.chromasToProcess.split(',');
@@ -76,4 +75,3 @@ const plugin = (file, librarySettings, inputs, otherArguments) => {
 
 module.exports.details = details;
 module.exports.plugin = plugin;
-  
