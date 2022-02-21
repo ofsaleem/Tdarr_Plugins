@@ -42,12 +42,11 @@ const plugin = (file, librarySettings, inputs, otherArguments) => {
   };
 
   const fileScheme = '';
-  for track in file.mediaInfo.track {
-      if track.type == "Video" {
-          fileScheme = track.ChromaSubsampling;
-          break;
-      }
-  }
+
+  file.mediaInfo.track.forEach(track => 
+    if track.type == "Video" {
+      fileScheme = track.ChromaSubsampling;
+    });
 
   if (inputs.chromasToProcess !== '') {
     const schemes = inputs.chromasToProcess.split(',');
