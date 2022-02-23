@@ -4,7 +4,7 @@ const details = () => ({
   Name: 'Filter by chroma scheme',
   Type: 'Video',
   Operation: 'Filter',
-  Description: 'Only allow specified chroma subsampling (4:4:4, 4:2:0, etc) scheme to be processed \n\n',
+  Description: 'Only allow specified chroma subsampling (yuv444p, yuv420, etc) scheme to be processed \n\n',
   Version: '1.00',
   Tags: 'filter',
   Inputs: [
@@ -16,7 +16,7 @@ const details = () => ({
         type: 'text',
       },
       tooltip:
-        'Enter a comma separated list of chroma subsampling schemes to be processed. Leave blank if using chromasToNotProcess',
+        'Enter a comma separated list of chroma subsampling schemes to be processed. Leave blank if using chromasToNotProcess. Valid values are those found with ffmpeg -pix_fmts',
     },
     {
       name: 'chromasToNotProcess',
@@ -26,7 +26,7 @@ const details = () => ({
         type: 'text',
       },
       tooltip:
-        'Enter a comma separated list of chroma subsampling schemes to be not be processed. Leave blank if using chromasToProcess',
+        'Enter a comma separated list of chroma subsampling schemes to be not be processed. Leave blank if using chromasToProcess. Valid values are those found with ffmpeg -pix_fmts',
     },
   ],
 });
