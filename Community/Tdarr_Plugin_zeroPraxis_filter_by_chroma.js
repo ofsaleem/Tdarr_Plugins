@@ -11,7 +11,7 @@ const details = () => ({
     {
       name: 'chromasToProcess',
       type: 'string',
-      defaultValue: 'yuv444p10le',
+      defaultValue: 'yuv444p10le,yuv444p,yuvj444p,yuv444p16le,yuv444p16be,yuv444p9be,yuv444p9le,yuv444p10be,yuv444p10le,yuva444p,yuva444p9be,yuva444p9le,yuva444p10be,yuva444p16be,yuva444p16le,yuv444p12be,yuv444p12le,yuv444p14be,yuv444p14le,yuva444p12be,yuva444p12le',
       inputUI: {
         type: 'text',
       },
